@@ -28,6 +28,7 @@ let imagesection=document.getElementById('imagesSection');
 const img1=document.getElementById('img1');
 const img2=document.getElementById('img2');
 const img3=document.getElementById('img3');
+const restotal=document.getElementById('total');
 
 ///////////////////////////////////////////////////////
 
@@ -37,8 +38,22 @@ function Pic(name){
   this.votes = 0;
   this.path=`./img/${name}`;
   Pic.allpic.push(this);
+  //localStorage.setItem('order',JSON.stringify(Pic.allpic));
 }
 Pic.allpic=[];
+
+function updateStorage(){
+  const arrayproduct = JSON.stringify(Pic.allpic);
+  localStorage.setItem('order', arrayproduct);
+
+}
+function getOrders(){
+  let data = localStorage.getItem('order');
+  data =JSON.parse(data);
+  return data;
+}
+
+console.log(getOrders);
 
 for(let i=0;i<names.length;i++)
 {
@@ -102,7 +117,9 @@ function display(event){
   }
   if (maxTrials === 0) {
     imagesection.removeEventListener('click',display);
+    result();
     createChart();
+    updateStorage();
   }
 }
 
@@ -112,14 +129,25 @@ function randomNumber(min, max) {
 }
 render();
 
+function result(){
+  let unorderlist=document.createElement('ul');
+  unorderlist.innerText='';
+  for (let index = 0; index <names.length; index++) {
+    let resultlist=document.createElement('li');
+    unorderlist.appendChild(resultlist);
+    let total= names[index]+ 'has'+getOrders()[index].votes+'votes'+'and'+getOrders()[index].views+'viwes';
+    resultlist.innerText=total;
+  }
+  restotal.appendChild(unorderlist);
+}
+
 function createChart(){
-  //let context = document.getElementById('myChart').getContext('2d');
   let getpicNames=[];
   let getpicVotes=[];
   let getProductsViews=[];
   console.log(getpicVotes);
 
-  var ctx = document.getElementById('myChart').getContext('2d');
+  let ctx = document.getElementById('myChart').getContext('2d');
   for(let i=0;i<Pic.allpic.length;i++){
     getpicNames.push(Pic.allpic[i].name);
   }
@@ -140,7 +168,7 @@ function createChart(){
         data: getpicVotes
       },
       {
-        label: 'votes result',
+        label: 'Views result',
         backgroundColor: 'rgb(55, 99, 132)',
         borderColor: 'rgb(188, 99, 132)',
         data:getProductsViews
