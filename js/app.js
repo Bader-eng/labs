@@ -157,6 +157,7 @@ function createChart(){
   for(let i=0;i<Pic.allpic.length;i++){
     getProductsViews.push(Pic.allpic[i].views);
   }
+  
   var chart = new Chart(ctx, {
     type: 'bar',
     data: {
