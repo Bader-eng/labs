@@ -131,6 +131,9 @@ render();
 
 function result(){
   let unorderlist=document.createElement('ul');
+  let productList = getOrders();
+    if (productList === null) {
+      productList =Pic.allpic };
   unorderlist.innerText='';
   for (let index = 0; index <names.length; index++) {
     let resultlist=document.createElement('li');
