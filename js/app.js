@@ -66,7 +66,6 @@ function render(){
   let img1number= randomNumber(0,Pic.allpic.length-1);
   let img2number =randomNumber(0,Pic.allpic.length-1);
   let img3number =randomNumber(0,Pic.allpic.length-1);
-
   do{
     img1number= randomNumber(0,Pic.allpic.length-1);
     img2number =randomNumber(0,Pic.allpic.length-1);
@@ -106,9 +105,6 @@ function render(){
 let maxTrials =25;
 imagesection.addEventListener('click',display);
 function display(event){
-   let productList = getOrders();
-    if (productList === null) {
-      productList =Pic.allpic};
   maxTrials-=1;
   if (event.target.id === 'img1' || event.target.id === 'img2' || event.target.id === 'img3' ){
     for (let i = 0; i < Pic.allpic.length; i++) {
@@ -135,10 +131,13 @@ render();
 function result(){
   let unorderlist=document.createElement('ul');
   unorderlist.innerText='';
+  let productList = getOrders();
+  if (productList === null) {
+    productList =Pic.allpic}
   for (let index = 0; index <names.length; index++) {
     let resultlist=document.createElement('li');
     unorderlist.appendChild(resultlist);
-    let total= names[index]+ 'has'+getOrders()[index].votes+'votes'+'and'+getOrders()[index].views+'viwes';
+    let total= names[index]+ 'has'+productList[index].votes+'votes'+'and'+productList[index].views+'viwes';
     resultlist.innerText=total;
   }
   restotal.appendChild(unorderlist);
