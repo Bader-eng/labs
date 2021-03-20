@@ -106,6 +106,9 @@ function render(){
 let maxTrials =25;
 imagesection.addEventListener('click',display);
 function display(event){
+   let productList = getOrders();
+    if (productList === null) {
+      productList =Pic.allpic};
   maxTrials-=1;
   if (event.target.id === 'img1' || event.target.id === 'img2' || event.target.id === 'img3' ){
     for (let i = 0; i < Pic.allpic.length; i++) {
@@ -131,9 +134,6 @@ render();
 
 function result(){
   let unorderlist=document.createElement('ul');
-  let productList = getOrders();
-    if (productList === null) {
-      productList =Pic.allpic };
   unorderlist.innerText='';
   for (let index = 0; index <names.length; index++) {
     let resultlist=document.createElement('li');
