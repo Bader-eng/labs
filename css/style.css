@@ -1,0 +1,47 @@
+
+body {
+    background: #f2f4f8;
+  }
+  header {
+    text-align: center;
+    border: 5px solid silver;
+    color: #000;;
+    margin-bottom: 40px;
+  }
+  header nav ul {
+    list-style: none;
+  }
+  header nav ul li {
+    display: inline-block;
+    padding: 10px;
+  }
+  header nav ul li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 25px;
+    font-weight: 100;
+  }
+  header nav ul li a:hover {
+    color:silver;
+  }
+  #imagesSection {
+    max-width: 90%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  img {
+    width: 300px;
+    height: 300px;
+    border: 10px solid silver;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+  }
+  button{
+    width: 50%;
+    color: brown;
+    background-color:black;
+    border: crimson;
+    border-style: groove;
+    
+  }
